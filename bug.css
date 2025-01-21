@@ -1,0 +1,21 @@
+The following CSS code snippet demonstrates an unusual issue where the `::before` pseudo-element's content unexpectedly overlaps with the main element's content. This happens because of incorrect z-index settings or lack of proper stacking context.
+
+```css
+.container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: lightblue;
+}
+
+.container::before {
+  content: "Hello!";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightcoral;
+  z-index: 1;
+}
+```
+
+The `::before` element should ideally appear on top, but due to the lack of proper z-index management or a missing stacking context, it overlaps the main content unexpectedly.

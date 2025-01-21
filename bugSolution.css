@@ -1,0 +1,24 @@
+The solution involves establishing a stacking context for the parent container and correctly managing the `z-index` values.
+
+```css
+.container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  background-color: lightblue;
+  /* Create a stacking context */
+  z-index: 0;
+}
+
+.container::before {
+  content: "Hello!";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: lightcoral;
+  /* Ensure that the pseudo-element is above the parent */
+  z-index: 1;
+}
+```
+
+By setting `z-index: 0` on the container, we create a stacking context.  The `::before` element, with `z-index: 1`, is then correctly layered on top.
